@@ -1,0 +1,33 @@
+{
+  "type": "module",
+  "name": "nft-community-project-server",
+  "version": "1.0.0",
+  "description": "Node.js HTTP Web server for the NFT Community Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victoriatan89/nft-community-project-server.git"
+  },
+  "keywords": [
+    "Node",
+    "REST",
+    "Server",
+    "HTTP"
+  ],
+  "author": "Xin Tan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victoriatan89/nft-community-project-server/issues"
+  },
+  "homepage": "https://github.com/victoriatan89/nft-community-project-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.3.0",
+    "opensea-scraper": "^6.1.0"
+  }
+}
