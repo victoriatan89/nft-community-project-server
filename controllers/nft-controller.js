@@ -1,4 +1,5 @@
 import OpenseaScraper from 'opensea-scraper';
+import * as rankingsDao from '../database/rankings/rankings-dao.js'
 
 // scrape all slugs, names and ranks from the top collections from the rankings page
 // "type" is one of the following:
@@ -7,6 +8,8 @@ import OpenseaScraper from 'opensea-scraper';
 // "30d": ranking of last 30 days: https://opensea.io/rankings?sortBy=thirty_day_volume
 // "total": scrapes all time ranking: https://opensea.io/rankings?sortBy=total_volume
 const getRankings = async (req, res) => {
+    const rankings = await rankingsDao.getRankings();
+    res.json(rankings);
     const type = req.params['type'];
     const options = {
         debug: false,
@@ -14,8 +17,8 @@ const getRankings = async (req, res) => {
         sort: true,
         browserInstance: undefined
     }
-    const rankings = await OpenseaScraper.rankings(type, options);
-    res.json(rankings);
+    const newRankings = await OpenseaScraper.rankings(type, options);
+    const status = await rankingsDao.updateRankings(newRankings)
 }
 
 // get basic collection info from the opensea API
